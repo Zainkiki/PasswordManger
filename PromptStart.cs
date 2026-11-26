@@ -13,7 +13,6 @@ namespace PasswordManger
         {
             string choice;
             string currentPassword = "";
-
             do
             {
                 Console.Clear();
@@ -42,17 +41,30 @@ namespace PasswordManger
                             break;
                         }
 
-                        List<string> passwords = new List<string>();
+                        Console.WriteLine("Enter the login username");
+                        string userName = Console.ReadLine() ?? "";
+
+                        Console.WriteLine("Enter the website name");
+                        string websiteName = Console.ReadLine() ?? "";
+
+                        PasswordEntry newEntry = new PasswordEntry
+                        {
+                            Password = currentPassword,
+                            Username = userName,
+                            Website = websiteName
+                        };
+
+                        List<PasswordEntry> passwords = new List<PasswordEntry>();
 
                         if (File.Exists(filePath))
                         {
                             string existingJson = File.ReadAllText(filePath);
 
-                            passwords = JsonSerializer.Deserialize<List<string>>(existingJson)
-                                        ?? new List<string>();
+                            passwords = JsonSerializer.Deserialize<List<PasswordEntry>>(existingJson)
+                                        ?? new List<PasswordEntry>();
                         }
 
-                        passwords.Add(currentPassword);
+                        passwords.Add(newEntry);
 
                         string json = JsonSerializer.Serialize(passwords,
                             new JsonSerializerOptions { WriteIndented = true });
@@ -60,6 +72,7 @@ namespace PasswordManger
                         File.WriteAllText(filePath, json);
 
                         Console.WriteLine("Password saved!");
+
                         currentPassword = "";
                         break;
 
@@ -68,13 +81,17 @@ namespace PasswordManger
                         {
                             string savedJson = File.ReadAllText(filePath);
 
-                            List<string> savedPasswords =
-                                JsonSerializer.Deserialize<List<string>>(savedJson)
-                                ?? new List<string>();
+                            List<PasswordEntry> savedPasswords =
+                                JsonSerializer.Deserialize<List<PasswordEntry>>(savedJson)
+                                ?? new List<PasswordEntry>();
 
-                            foreach (string password in savedPasswords)
+                            foreach (PasswordEntry entry in savedPasswords)
                             {
-                                Console.WriteLine(password);
+                                Console.WriteLine("-------------------------");
+                                Console.WriteLine($"Password: {entry.Password}");
+                                Console.WriteLine($"Username: {entry.Username}");
+                                Console.WriteLine($"Website: {entry.Website}");
+                                Console.WriteLine("-------------------------");
                             }
                         }
 
