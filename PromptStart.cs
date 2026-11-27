@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text.Json;
+using System.Transactions;
 
 namespace PasswordManger
 {
@@ -47,11 +49,19 @@ namespace PasswordManger
                         Console.WriteLine("Enter the website name");
                         string websiteName = Console.ReadLine() ?? "";
 
+                        Console.WriteLine("Enter the Email");
+                        string email = Console.ReadLine() ?? "";
+
+                        Console.WriteLine("Write a note if needed");
+                        string note = Console.ReadLine() ?? "";
+
                         PasswordEntry newEntry = new PasswordEntry
                         {
                             Password = currentPassword,
                             Username = userName,
-                            Website = websiteName
+                            Website = websiteName,
+                            Email = email,
+                            Note = note
                         };
 
                         List<PasswordEntry> passwords = new List<PasswordEntry>();
@@ -91,6 +101,8 @@ namespace PasswordManger
                                 Console.WriteLine($"Password: {entry.Password}");
                                 Console.WriteLine($"Username: {entry.Username}");
                                 Console.WriteLine($"Website: {entry.Website}");
+                                Console.WriteLine($"Email: {entry.Email}");
+                                Console.WriteLine($"Note: {entry.Note}");
                                 Console.WriteLine("-------------------------");
                             }
                         }
