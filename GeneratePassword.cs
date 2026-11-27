@@ -12,7 +12,7 @@ namespace PasswordManger
 
             for (int i = 0; i < size; i++)
             {
-                int choice = RNG.random.Next(0, 3);
+                int choice = RNG.random.Next(0, 4);
 
                 if (choice == 0)
                 {
@@ -29,6 +29,14 @@ namespace PasswordManger
                     letter += (char)number;
 
                     fullPassword += letter;
+                }
+                else if (choice == 2)
+                {
+                    int number = RNG.random.Next(0, 6);
+                    string symbols = "!@#%_?";
+
+                    fullPassword += symbols[number];
+
                 }
                 else
                 {
