@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PasswordManger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a67f13c43c18fa579be126537429d42e3913e99")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a7d58e306880d84f02b5b5ed7104fa69bafbdcc")]
 [assembly: System.Reflection.AssemblyProductAttribute("PasswordManger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PasswordManger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

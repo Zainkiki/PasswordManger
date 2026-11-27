@@ -114,8 +114,27 @@ namespace PasswordManger
                         break;
 
                     case "4":
+                        Console.WriteLine("You are about to clear the Password manger!");
+                        Console.WriteLine("To continute pick one of the options");
+                        Console.WriteLine("1. Clear");
+                        Console.WriteLine("2. Cancel");
+
+                        string pick = Console.ReadLine() ?? "0";
+
+
+                        if (pick == "1")
+                        {
                         File.WriteAllText(filePath, "[]");
                         Console.WriteLine("Password manger has been cleared");
+                        }
+                        else if (pick == "2")
+                        {
+                            Console.WriteLine("Canceled");
+                        }
+                        else
+                        {
+                            Console.WriteLine("try again");
+                        }
                         break;
 
                     case "0":
